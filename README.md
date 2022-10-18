@@ -2,7 +2,7 @@
 Group project Qunatum Computing Fall 2022. Group memebrs: Palvit Garg, Harsh
 Joshi, and Shawn Salekin
 
-### Problem Description
+## Problem Description
 - Cannot breakpoint debug
 - measurement destroys superpositions, entanglements
 
@@ -14,3 +14,13 @@ Best-effort breakpoint debugging with execution. Rough steps:
 5. Use circuit as an initalizer (aka. state preparation -> Qiskit API), run original circuit from breakpoint onward
 
 Although the output will only examine a subset of original states. It is Still better than no breakpoint debugging. We will provide scenarios to demonstrate this point.
+
+
+## Project Timeline
+TBD
+
+## Similar Work from the Previous Semesters
+- Debugging with statevector
+  (https://github.ncsu.edu/fmuelle/qc19/tree/master/hw/hw6/m3/csc591-quantum-debugging)
+
+[The above looks like the closest to what we are working on.]
