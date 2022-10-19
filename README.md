@@ -3,7 +3,7 @@
 ## Group Members
 - Palvit Garg (pgarg5)
 - Harshwardhan Joshi (hjoshi2)
-- and Shawn Salekin (ssaleki)
+- Shawn Salekin (ssaleki)
 
 ## Problem Description
 In classical computing, debugging with breakpoint means halting the program
