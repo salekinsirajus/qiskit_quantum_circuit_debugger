@@ -1,7 +1,9 @@
 # Breakpoint Debugging on a Physical Qunatum Circuit
 
 ## Group Members
-Palvit Garg, Harsh Joshi, and Shawn Salekin
+- Palvit Garg (pgarg5)
+- Harshwardhan Joshi (hjoshi2)
+- and Shawn Salekin (ssaleki)
 
 ## Problem Description
 In classical computing, debugging with breakpoint means halting the program
@@ -24,12 +26,12 @@ target is to measure the state of qubits at point brk.
 To “recreate”, i.e., synthesize an equivalent circuit right after it is
 measured, we thought of two possible methods. 
 
-1. Approach 1
+1. **Approach 1**:
 We make two circuits of varying length: one ends at the breakpoint, and the
 other stops at the original end without stopping at the breakpoint. Then we run
 both of these circuits.
 
-2. Approach 2
+2. **Approach 2**:
 Create a custom gate using the unitary matrix that results from running circuit
 part A, save it somewhere. Then create a custom gate using the saved unitary
 matrix to circuit part B.This custom gate is equivalent to the circuit part A.
