@@ -30,6 +30,7 @@ measured, we thought of two possible methods.
 We make two circuits of varying length: one ends at the breakpoint, and the
 other stops at the original end without stopping at the breakpoint. Then we run
 both of these circuits.~~
+
 (update 11/05/22): since this is a trivial and inefficient implementation, we
 will focus our attention to approach 2.
 
