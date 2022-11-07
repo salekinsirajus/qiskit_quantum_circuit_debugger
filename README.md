@@ -59,6 +59,9 @@ Now run this custom gate and then part B.
 - Add tests and run a number of experiments to validate the correctness of our
   implementation.(11/26/2022)
 
+## Future Readings
+- https://dl.acm.org/doi/abs/10.1145/3373376.3378488
+- https://arxiv.org/pdf/2103.09172.pdf
 
 ## References
 - https://qiskit.org/documentation/tutorials/circuits_advanced/02_operators_overview.html
