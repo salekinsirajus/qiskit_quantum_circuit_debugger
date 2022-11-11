@@ -59,6 +59,11 @@ Now run this custom gate and then part B.
 - Add tests and run a number of experiments to validate the correctness of our
   implementation.(11/26/2022)
 
+## Project Timeline (Original)
+- 11/01/2022: Implement approach 1
+- 11/10/2022: Analyze the feasibility of implementing approach 2.
+- 11/26/2022: Implement approach 2 (or a better one)
+
 ## Future Readings
 - https://dl.acm.org/doi/abs/10.1145/3373376.3378488
 - https://arxiv.org/pdf/2103.09172.pdf
