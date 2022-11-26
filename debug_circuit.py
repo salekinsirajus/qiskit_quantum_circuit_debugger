@@ -49,14 +49,18 @@ class QCDebugger:
     def _continue(self):
         """do a simultaneous run on simulator"""
         # find the next barrier
-        probability_run_result = run_circuit(self.qc, 'qasm_simulator')
+       
         # run unitary simulation till that point
         # FIXME: this self.qc will change it will be only b/w this and next bp
-        unitary = run_circuit(self.qc, 'unitary_simulator')
+        unitary_run = run_circuit(self.qc, 'unitary_simulator')
+        unitary = unitary_run.get_unitary()
         self.re_qc = self.resynthesize_circuit(unitary)
 
-        plot_histogram(probability_run_result.counts) 
+        self.qc.measure_all() #FIXME: Measurement should be removed
+        probability_run_result = run_circuit(self.qc, 'qasm_simulator')
+        print(probability_run_result.get_counts())
 
     def c(self):
         """c(ontinue): run until the next breakpoint"""
         return self._continue()
+
