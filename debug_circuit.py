@@ -1,0 +1,122 @@
+from qiskit import Aer, execute, transpile
+from qiskit import QuantumCircuit
+
+from pprint import pprint
+
+
+def run_circuit(circ, simulator='qasm_simulator'):
+    backend = Aer.get_backend(simulator)
+    job = execute(circ, backend, shots=1000)
+    result = job.result()
+
+    return result
+
+class QuantumDebugCircuit(QuantumCircuit):
+    def __init__(self, *args, **kwargs):
+        self.breakpoints = [0,] # list of indices where the breakpoint should be at
+        super(QuantumDebugCircuit, self).__init__(*args, **kwargs)
+
+    def bp(self):
+        if len(self.data) > 0:
+            self.barrier()
+            self.breakpoints.append(len(self.data) - 1)
+            # add a barrier to keep a visual track
+
+
+class QCDebugger:
+
+    def __init__(self, qc):
+        """Debugger object that acts as a runner, similar to the GDB interface"""
+        self.qc = qc
+        self.re_qc = None
+        self.sub_qc = None
+        self.unitary_qc = None
+
+        self._unitary_for_next_bp = None
+        self._circuit_for_next_bp = None
+        self._temp_var = None
+        # TODO: options will be added later
+
+        if self._validate_circuit() == False:
+            raise Exception("Circuit provided is cannot be used with a debugger")
+
+
+    def _validate_circuit(self):
+        """ensure there is no invalid instructions in the circuit"""
+        # circuits with measurements cannot produce unitary matrix
+
+        return True
+
+    def resynthesize_circuit(self, unitary):
+        """Create, transpile and ready to run"""
+        nqubits = self.qc.num_qubits
+        ncbits = self.qc.num_clbits
+        re_qc = QuantumCircuit(nqubits, ncbits)
+        re_qc.unitary(unitary, range(nqubits))
+        re_qc = transpile(re_qc, basis_gates = ['cx', 'u3'])
+        return re_qc
+
+    def slice_circuit_beginning_to_bp(self, debug_circuit):
+        if not isinstance(debug_circuit, QuantumDebugCircuit):
+            raise Exception("Use QuantumDebugCircuit class to get a debuggable circuit.")
+
+        bps = debug_circuit.breakpoints
+        if len(bps) > 1:
+            [start, end] = bps[:2]
+        elif len(bps) == 1:
+            end = bps[0]
+
+        sliced_qc = debug_circuit.copy("subcircuit_bp_{0}_to_{1}".format(start, end))
+        del sliced_qc.data[end:]
+        self.unitary_qc = sliced_qc
+
+    def slice_circuit_bp_to_bp(self, debug_circuit):
+        """Call this after the slice_circuit_beginning_to_bp function"""
+        if not isinstance(debug_circuit, QuantumDebugCircuit):
+            raise Exception("Use QuantumDebugCircuit class to get a debuggable circuit.")
+
+        bps = debug_circuit.breakpoints
+        if len(bps) > 1:
+            [start, end] = bps[:2]
+
+        sliced_qc = debug_circuit.copy("subcircuit_bp_{0}_to_{1}".format(start, end))
+        del sliced_qc.data[end:]
+        del sliced_qc.data[:start]
+
+        self.sub_qc = sliced_qc
+        #print(self.sub_qc)
+        # remove the first item
+        debug_circuit.breakpoints.pop(0)
+
+
+    def _continue(self):
+        """do a simultaneous run on simulator"""
+        # Parallel Run 1: get unitary matrix
+        self.slice_circuit_beginning_to_bp(self.qc)
+        unitary_run = run_circuit(self.unitary_qc, 'unitary_simulator')
+        unitary = unitary_run.get_unitary()
+
+        # Parallel Run 2: get measurements
+        self._temp_var = unitary # FIXME: remove this later
+        self.re_qc = self.resynthesize_circuit(unitary)
+        self.slice_circuit_bp_to_bp(self.qc)
+
+        self.re_qc.compose(self.sub_qc)
+
+        # if resynthesized circuit is available, run that
+        # else run the initial circuit
+        if self.re_qc:
+            measure_qc = self.re_qc
+        else:
+            measure_qc = self.qc
+
+        print(measure_qc)
+        measure_qc.measure_all()
+        probability_run_result = run_circuit(measure_qc, 'qasm_simulator')
+        pprint(probability_run_result.get_counts())
+        measure_qc.remove_final_measurements()
+
+    def c(self):
+        """c(ontinue): run until the next breakpoint"""
+        return self._continue()
+
