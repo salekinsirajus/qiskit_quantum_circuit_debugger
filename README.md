@@ -74,6 +74,7 @@ print(result.get_counts())
 ```
 
 6. If you want to use hardware you have to initiate the `QCDebugger` like so:
+
 ```
 from qiskit import IBMQ
 
