@@ -38,6 +38,36 @@ matplotlib==3.6.0
 from qiskit_debugger import QuantumDebugCircuit, QCDebugger
 ```
 
+4. A motivating example of how to use the debugger classes
+```
+qc = QuantumDebugCircuit(2)
+qc.x(0)
+qc.h(range(2))
+qc.cx(0, 1)
+qc.h(range(2))
+qc.bp()      # <-- Add a breakpoint here
+qc.h(range(2))
+qc.x(range(2))
+qc.bp()      # <-- Add a breakpoint here
+qc.cx(1, 0)
+qc.h(range(2))
+qc.bp()
+
+qc.draw()
+
+# run each breakpoints
+qdb = QCDebugger(qc)
+qdb.c()
+qdb.c()
+qdb.c()
+qdb.c()
+
+# Run the circuit as a whole w/o debugger
+qc.measure_all()
+result = run_circuit(qc)
+print(result.get_counts())
+```
+
 ## Solution Approaches 
 Let’s assume we have a circuit with multiple qubits, and it has a breakpoint
 brk. The circuit before the breakpoint is called A, and after is called B. The
