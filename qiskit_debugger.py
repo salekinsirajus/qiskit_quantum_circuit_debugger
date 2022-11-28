@@ -4,19 +4,27 @@ from qiskit.visualization import plot_histogram
 
 from pprint import pprint
 
-def run_circuit(circ, simulator='qasm_simulator'):
-    backend = Aer.get_backend(simulator)
-    job = execute(circ, backend, shots=1000)
-    result = job.result()
+hw_backend = None
+
+def run_circuit(circ, simulator='qasm_simulator', use_hardware=False):
+    if not use_hardware:
+        backend = Aer.get_backend(simulator)
+        job = execute(circ, backend, shots=1000)
+        result = job.result()
+    
+    if use_hardware:
+        hw_job1 = execute(circ, hw_backend, shots=1000)
+        result = hw_job1.result()
 
     return result
 
 
 class QCDebugger:
 
-    def __init__(self, qc):
+    def __init__(self, qc, use_hardware=False):
         """Debugger object that acts as a runner, similar to the GDB interface"""
-        self.qc = qc 
+        self.qc = qc
+        self.use_hardware = use_hardware
         self.re_qc = None
         self.sub_qc = None
         self.unitary_qc = None
@@ -114,7 +122,7 @@ class QCDebugger:
         #print("synthesized circuit")
         #print(measure_qc)
         measure_qc.measure_all()
-        probability_run_result = run_circuit(measure_qc, 'qasm_simulator')
+        probability_run_result = run_circuit(measure_qc, 'qasm_simulator', use_hardware=self.use_hardware)
         print("Probability Distribution")
         self.counts_from_last_measurement = probability_run_result.get_counts()
         print(self.counts_from_last_measurement)
@@ -143,4 +151,4 @@ class QuantumDebugCircuit(QuantumCircuit):
             # add a barrier to keep a visual track
             
     
-__all__ = [QCDebugger, QuantumDebugCircuit, run_circuit]
+__all__ = [QCDebugger, QuantumDebugCircuit, run_circuit, hw_backend]
