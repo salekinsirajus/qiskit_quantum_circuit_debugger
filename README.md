@@ -49,6 +49,17 @@ Now run this custom gate and then part B.
 - Assessed the importance of phase date in synthesizing a circuit from breakpoint
 - Investigated different methods of generating unitary matrices
 
+## Final Result
+We implemented a hybrid approach that uses both a simulator and a hardware
+
+## Open Problems
+Some of them
+
+## Contributions During the Final Round
+- Research and experiments with pure hawrdware approach - Palvit
+- Experiments and implementation with simulator approach - Shawn
+- Benchmakring, experiments, and final reports - Harsh
+
 ## Timeline (Detailed & Revised) 
 - Confirm whether and under what condition we can generate a unitary from a
   hardware run (11/12/2022)
