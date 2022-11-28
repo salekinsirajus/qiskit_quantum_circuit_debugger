@@ -23,13 +23,19 @@ down to measuring at the breakpoint and preserving enough information to
 
 ## How To Test
 We are assuming you are faimilar with Qiskit and git. We'd also assume you have
-jupyter notebook installed on your system. Ensure the following python libraries
-are installed in either a) python virtual environment, or b) jupyter notebook kernel.
+jupyter notebook installed on your system. 
 
+1. clone this repo: `git clone https://github.ncsu.edu/ssaleki/qc_besteffort_breakpoint_debugging.git`
+
+2. Ensure the following python libraries are installed in either a) python virtual environment, or b) jupyter notebook kernel.
 ```
 qiskit-ibm-runtime==0.6.2
 qiskit-aer==0.11.0
 matplotlib==3.6.0
+```
+3. Import the following the classes to experiment with the debugger like this:
+```
+from qiskit_debugger import QuantumDebugCircuit, QCDebugger
 ```
 
 ## Solution Approaches 
