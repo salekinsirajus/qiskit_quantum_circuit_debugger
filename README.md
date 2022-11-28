@@ -62,13 +62,16 @@ qdb.c()
 qdb.c()
 qdb.c()
 ```
-# Run the circuit as a whole w/o debugger
+
+5. Run the circuit as a whole w/o debugger
+
 ```
 qc.measure_all()
 result = run_circuit(qc)
 print(result.get_counts())
 ```
-5. If you want to use hardware you have to initiate the `QCDebugger` like so:
+
+6. If you want to use hardware you have to initiate the `QCDebugger` like so:
 ```
 from qiskit import IBMQ
 
