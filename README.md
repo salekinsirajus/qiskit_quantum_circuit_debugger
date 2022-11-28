@@ -21,6 +21,17 @@ Breakpoint debugging is still needed for quantum computing, so our problem boils
 down to measuring at the breakpoint and preserving enough information to
 “recreate” that state and continue execution from that point.
 
+## How To Test
+We are assuming you are faimilar with Qiskit and git. We'd also assume you have
+jupyter notebook installed on your system. Ensure the following python libraries
+are installed in either a) python virtual environment, or b) jupyter notebook kernel.
+
+```
+qiskit-ibm-runtime==0.6.2
+qiskit-aer==0.11.0
+matplotlib==3.6.0
+```
+
 ## Solution Approaches 
 Let’s assume we have a circuit with multiple qubits, and it has a breakpoint
 brk. The circuit before the breakpoint is called A, and after is called B. The
