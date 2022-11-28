@@ -91,10 +91,23 @@ matrix to circuit part B.This custom gate is equivalent to the circuit part A.
 Now run this custom gate and then part B.
 
 ## Final Result
-We implemented a hybrid approach that uses both a simulator and a hardware
+We have successfully implemented the first approach which uses a combination of simulation and hardware.
+Using unitary matrices from unitary simulator runs and actual output from hardware runs,
+we were able to correctly re-create the qubit states pre-measurement, and were able to successfully
+resume the circuit after the breakpoint. Our implementation is readily usable as well. Our expectation with limited erorr propagation with this approach is also  
+verified. This approach can aid the quantum computing programmers in interacting with
+and debugging their code in a more effective way, as long as the circuit width isn't too big.
+
+On the other hand, we found that the pure hardware approach is cumbersome and expensive to implement. The key driver behind
+this approach is Quantum Phase Estimation, and while there are a number of algorithms uses this sub-routine, in
+practice it is a) not very precise, b) hard to implement, and c) limits the number of breakpoints to a handful
+due to error propagation.
+
 
 ## Open Problems
-Some of them
+- Implement a comprehensive test suite for the debugger implmentation
+- Work out a way to extend the QPE and the hardware approach to extend to 2-,3-, and more qubit circuits
+
 
 ## Contributions During the Final Round
 - Research and experiments with pure hawrdware approach - Palvit
