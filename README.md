@@ -61,8 +61,9 @@ qdb.c()
 qdb.c()
 qdb.c()
 qdb.c()
-
+```
 # Run the circuit as a whole w/o debugger
+```
 qc.measure_all()
 result = run_circuit(qc)
 print(result.get_counts())
