@@ -43,12 +43,6 @@ part A, save it somewhere. Then create a custom gate using the saved unitary
 matrix to circuit part B.This custom gate is equivalent to the circuit part A.
 Now run this custom gate and then part B.
 
-## Progress Made 
-- Synthesized a new circuit based on a unitary matrix and run it on a real
-  hardware.
-- Assessed the importance of phase date in synthesizing a circuit from breakpoint
-- Investigated different methods of generating unitary matrices
-
 ## Final Result
 We implemented a hybrid approach that uses both a simulator and a hardware
 
@@ -59,6 +53,12 @@ Some of them
 - Research and experiments with pure hawrdware approach - Palvit
 - Experiments and implementation with simulator approach - Shawn
 - Benchmakring, experiments, and final reports - Harsh
+
+## Progress Made (Round 2)
+- Synthesized a new circuit based on a unitary matrix and run it on a real
+  hardware.
+- Assessed the importance of phase date in synthesizing a circuit from breakpoint
+- Investigated different methods of generating unitary matrices
 
 ## Timeline (Detailed & Revised) 
 - Confirm whether and under what condition we can generate a unitary from a
