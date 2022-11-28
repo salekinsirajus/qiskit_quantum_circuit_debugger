@@ -35,7 +35,7 @@ matplotlib==3.6.0
 ```
 3. Import the following the classes to experiment with the debugger like this:
 ```
-from qiskit_debugger import QuantumDebugCircuit, QCDebugger
+from qiskit_debugger import QuantumDebugCircuit, QCDebugger, run_circuit
 ```
 
 4. A motivating example of how to use the debugger classes
@@ -66,6 +66,18 @@ qdb.c()
 qc.measure_all()
 result = run_circuit(qc)
 print(result.get_counts())
+```
+5. If you want to use hardware you have to initiate the `QCDebugger` like so:
+```
+from qiskit import IBMQ
+
+# loading IBMQ account
+IBMQ.load_account()
+provider = IBMQ.get_provider(hub='ibm-q-ncsu', group='nc-state', project='grad-qc-class')
+# This is important, fill up the hw_backend variable like this.
+hw_backend = provider.get_backend('ibm_oslo')
+
+qdb = QCDebugger(qc, use_hardware=True)
 ```
 
 ## Solution Approaches 
