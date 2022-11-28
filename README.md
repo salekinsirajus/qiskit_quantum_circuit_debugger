@@ -33,12 +33,14 @@ qiskit-ibm-runtime==0.6.2
 qiskit-aer==0.11.0
 matplotlib==3.6.0
 ```
+
 3. Import the following the classes to experiment with the debugger like this:
 ```
 from qiskit_debugger import QuantumDebugCircuit, QCDebugger, run_circuit
 ```
 
-4. A motivating example of how to use the debugger classes
+4. A motivating example of how to use the debugger classes:
+
 ```
 qc = QuantumDebugCircuit(2)
 qc.x(0)
