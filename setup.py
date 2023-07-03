@@ -19,13 +19,12 @@ setup(
         "License :: OSI Approved :: MIT License", 
         "Programming Language :: Python :: 3", 
         "Programming Language :: Python :: 3.11", 
+        "Operating System :: OS Independent",
+
    ], 
-   packages=["qiskit_debugger"], 
+   py_modules=["qiskit_debugger"],
+   package_dir={'':'qiskit_debugger'},
+   python_requires='>=3.6',
    includepackagedata=True, 
-   installrequires=["feedparser","html2text"], 
-   entrypoints={ 
-       "console_scripts":[ 
-           "realpython=reader.__main__:main", 
-       ] 
-   }, 
+   installrequires=["qiskit"], 
  ) 
