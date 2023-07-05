@@ -7,10 +7,10 @@ README = (HERE/"README.md").read_text()
 
 setup(
    name="qiskit_debugger", 
-   version="0.1.0", 
-   descp="Quantum Circuit debugger for the Qiskit SDK.", 
-   long_descp=README,
-   long_descp_content="text/markdown", 
+   version="0.1.1", 
+   description="Quantum Circuit debugger for the Qiskit SDK.", 
+   long_description=README,
+   long_description_content_type="text/markdown",
    URL="https://github.com/salekinsirajus/qiskit_quantum_circuit_debugger", 
    author="Sirajus Salekin", 
    authoremail="ssalekin14@gmail.com", 
