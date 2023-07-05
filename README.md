@@ -1,13 +1,5 @@
 # Breakpoint Debugging on a Physical Qunatum Circuit
 
-## Group Members
-- Palvit Garg (pgarg5)
-- Harshwardhan Joshi (hjoshi2)
-- Shawn Salekin (ssaleki)
-
-#### Presentation
-[URL](https://docs.google.com/presentation/d/1SCwHKmPCc7U0Hl_CVZLNMto9HAEyD_zuz_fqGwnIzuc/edit?usp=sharing)
-
 ## Problem Description
 In classical computing, debugging with breakpoint means halting the program
 execution at any given point and freezing the program state. This allows
@@ -21,11 +13,22 @@ Breakpoint debugging is still needed for quantum computing, so our problem boils
 down to measuring at the breakpoint and preserving enough information to
 “recreate” that state and continue execution from that point.
 
+## Group Members
+- Palvit Garg (pgarg5)
+- Harshwardhan Joshi (hjoshi2)
+- Shawn Salekin (ssaleki)
+
+#### Presentation
+[URL](https://docs.google.com/presentation/d/1SCwHKmPCc7U0Hl_CVZLNMto9HAEyD_zuz_fqGwnIzuc/edit?usp=sharing)
+
 ## How To Test
 We are assuming you are faimilar with Qiskit and git. We'd also assume you have
 jupyter notebook installed on your system. 
 
-1. clone this repo: `git clone https://github.ncsu.edu/ssaleki/qc_besteffort_breakpoint_debugging.git`
+1. Install this library via pip
+```
+pip install qiskit_debugger
+``` 
 
 2. Ensure the following python libraries are installed in either a) python virtual environment, or b) jupyter notebook kernel.
 ```
