@@ -21,28 +21,18 @@ down to measuring at the breakpoint and preserving enough information to
 #### Presentation
 [URL](https://docs.google.com/presentation/d/1SCwHKmPCc7U0Hl_CVZLNMto9HAEyD_zuz_fqGwnIzuc/edit?usp=sharing)
 
-## How To Test
-We are assuming you are faimilar with Qiskit and git. We'd also assume you have
-jupyter notebook installed on your system. 
-
-1. Install this library via pip
+## Quickstart
+1. Install with pip 
 ```
 pip install qiskit_debugger
 ``` 
 
-2. Ensure the following python libraries are installed in either a) python virtual environment, or b) jupyter notebook kernel.
-```
-qiskit-ibm-runtime==0.6.2
-qiskit-aer==0.11.0
-matplotlib==3.6.0
-```
-
-3. Import the following the classes to experiment with the debugger like this:
+2. Import the following the classes to experiment with the debugger like this:
 ```
 from qiskit_debugger import QuantumDebugCircuit, QCDebugger, run_circuit
 ```
 
-4. A motivating example of how to use the debugger classes:
+3. A motivating example of how to use the debugger classes:
 
 ```
 qc = QuantumDebugCircuit(2)
@@ -68,7 +58,8 @@ qdb.c()
 qdb.c()
 ```
 
-5. Run the circuit as a whole w/o debugger
+
+Run the circuit as a whole w/o debugger
 
 ```
 qc.measure_all()
@@ -76,7 +67,7 @@ result = run_circuit(qc)
 print(result.get_counts())
 ```
 
-6. If you want to use hardware you have to initiate the `QCDebugger` like so:
+If you want to use hardware you have to initiate the `QCDebugger` like so:
 
 ```
 from qiskit import IBMQ
