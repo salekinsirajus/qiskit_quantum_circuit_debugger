@@ -12,7 +12,7 @@ authors = [
 maintainers = [
   {name = "Sirajus Salekin", email = "ssalekin14@gmail.com"}
 ]
-version = "0.1.2rc3"
+version = "0.1.2"
 description = "Quantum Circuit debugger for the Qiskit SDK."
 keywords = ["quantum", "computing", "debugger", "qiskit"]
 readme = "README.md"
